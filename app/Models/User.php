@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 use Laravel\Sanctum\HasApiTokens;
+use Config;
 
 class User extends Authenticatable
 {
@@ -46,7 +47,7 @@ class User extends Authenticatable
 
     public function routeNotificationForSlack(Notification $notification): string
     {
-        return "https://hooks.slack.com/services/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";
+        return Config::get('slack.web_hook_url');
     }
      /**
      * Route notifications for the Vonage channel.
